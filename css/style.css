@@ -1,0 +1,33 @@
+body {
+	background-color: #fdfdfd;
+}
+
+.main-panel {
+	height: 200px;
+	text-align: center;
+	line-height: 200px;
+	
+	font: 
+}
+
+.main-panel > .panel-body {
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+.main-panel:hover {
+	cursor: pointer;
+}
+
+.container {
+	margin-right: 0px;
+	margin-left: 0px;
+}
+
+.home-row {
+	min-height:100%;
+	min-height: 100vh;
+	
+	display: flex;
+	align-items: center;
+}
