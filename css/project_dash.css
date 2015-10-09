@@ -1,0 +1,16 @@
+#project_title_wrapper {
+	border-bottom: 1px solid black;
+}
+
+#project_desc {
+	font-size: 12px;
+}
+
+.underline {
+	border-bottom: 1px solid #efefef;
+}
+
+.status-active {
+	color: #99ff99;
+}
+
