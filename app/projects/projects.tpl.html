@@ -2,7 +2,10 @@
 	<div class='row'>
 		<span><i class='fa fa-arrow-o-left fa-4'></i></span>
 	</div>
+	<div class='row' id='title_wrapper'>
+		<h2>Projects</h2>
+	</div>
 	<div class='row' ng-controller='projectsCtrl'>
-		
+		<card ng-repeat='project in projects'></card>
 	</div>
 </div>
