@@ -13,7 +13,7 @@ angular.module('projects').controller('projectsCtrl', ['$scope', '$http', functi
 	
 }]);
 
-angular.module('projects').directive('projectCard', function(){
+angular.module('projects').directive('card', function(){
 	return {
 		restrict: 'E',
 		templateUrl: 'project-card.tpl.html'
