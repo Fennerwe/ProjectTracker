@@ -1,22 +1,25 @@
-angular.module('projects', ['ui-router']);
+angular.module('projects', [])
 
-angular.module('projects').config(function($stateProvider, $urlRouterProvider){
+.config(function($stateProvider, $urlRouterProvider){
 		
 		$stateProvider.state('project', {
 			url: 'project/:projectID',
-			templateUrl: 'projectDash/project-dash.tpl.html',
+			templateUrl: 'projects/projectDash/project-dash.tpl.html',
 			controller: 'projectDashCtrl'
 		});
-});
+})
 
-angular.module('projects').controller('projectsCtrl', ['$scope', '$http', function($scope, $http){
-	
-}]);
+.controller('ProjectsCtrl', ['$scope', '$http', function($scope, $http){
+	$http.get('projects/projects.php')
+	.success(function(response){
+		$scope.projects = response;
+	});
+}])
 
-angular.module('projects').directive('card', function(){
+.directive('card', function(){
 	return {
 		restrict: 'E',
-		templateUrl: 'project-card.tpl.html'
+		templateUrl: 'projects/project-card.tpl.html'
 	};
 });
 							
