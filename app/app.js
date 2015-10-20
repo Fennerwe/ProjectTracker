@@ -1,4 +1,5 @@
-angular.module('app', ['ui.router']);
+angular.module('app', ['ui.router',
+					   'projects']);
 					   
 angular.module('app').config(function($stateProvider, $urlRouterProvider){
 	$urlRouterProvider.otherwise('/home');
@@ -14,6 +15,7 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider){
 		})
 		.state('projects', {
 			url: '/projects',
-			templateUrl: 'app/projects/projects.tpl.html'
+			templateUrl: 'app/projects/projects.tpl.html',
+			controller: 'ProjectsCtrl'
 		});
 });
