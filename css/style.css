@@ -6,8 +6,6 @@ body {
 	height: 200px;
 	text-align: center;
 	line-height: 200px;
-	
-	font: 
 }
 
 .main-panel > .panel-body {
@@ -30,4 +28,13 @@ body {
 	
 	display: flex;
 	align-items: center;
+}
+
+card {
+	height: 100px;
+	box-shadow: 2px 2px 2px #888;
+}
+
+card:hover {
+	cursor: pointer;
 }
