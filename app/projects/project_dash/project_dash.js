@@ -1,6 +1,6 @@
-angular.module('projectDash', []);
+angular.module('project.dash', [])
 
-angular.module('projectDash').controller('projectDashCtrl', ['$scope', '$http', '$scopeParams', function($scope, $http, $scopeParams){
+.controller('projectDashCtrl', ['$scope', '$http', '$stateParams', function($scope, $http, $stateParams){
 	/*$http.get('get_project_dash.php')
 	.success(function(response){
 		$scope.Project = response;
