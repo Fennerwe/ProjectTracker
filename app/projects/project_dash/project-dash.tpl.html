@@ -22,7 +22,7 @@
 		</div>
 		<div class='row'>
 			<div class='col-xs-4'>
-				<span class='col-xs-12 underline'>Researcher(s)</span>
+				<span class='col-xs-12 underline'>Researcher(s):</span>
 				<ul type='disc'>
 					<li ng-repeat="researcher in Project.researchers">
 						{{ researcher.last_name }}, {{ researcher.first_name }} <span class='pi'>{{ researcher.pi ? "(Primary)" : "" }}</span>
@@ -30,7 +30,7 @@
 				</ul>
 			</div>
 			<div class='col-xs-4'>
-				<span class='col-xs-12 underline'>Grant(s)</span>
+				<span class='col-xs-12 underline'>Grant(s):</span>
 				<ul type='disc'>
 					<li ng-repeat="grant in Project.grants">
 						{{ grant.name }} ({{ grant.amount | currency }})
@@ -38,7 +38,7 @@
 				</ul>
 			</div>
 			<div class='col-xs-4'>
-				<span class='col-xs-12 underline'>Contributors</span>
+				<span class='col-xs-12 underline'>Contributor(s):</span>
 				<ul type='disc'>
 					<li ng-repeat="user in Project.contributing_users">
 						{{ user.name }} ({{ user.hours_contributed }})
@@ -47,12 +47,12 @@
 			</div>
 		</div>
 		<div class='row'>
-			<div class='col-xs-4'>
-				<span class='col-xs-12 underline'>Extra Info</span>
+			<div class='col-xs-8'>
+				<span class='col-xs-12 underline'>Extra Info:</span>
 				<ul type='none'>
-					<li>Deployment Server: {{ Project.dep_server }}</li>
-					<li>Git Repo: {{ Project.git_repo }}</li>
-					<li>Start Date: {{ Project.start_date | date : shortDate }}</li>
+					<li><span class='bold'>Deployment Server:</span> {{ Project.dep_server }}</li>
+					<li><span class='bold'>Git Repo:</span> {{ Project.git_repo }}</li>
+					<li><span class='bold'>Start Date:</span> {{ Project.start_date | date : shortDate }}</li>
 				</ul>
 			</div>
 			<div class='col-xs-4'>

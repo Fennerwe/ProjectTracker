@@ -19,3 +19,10 @@
 	font-size: 10px;
 }
 
+.bold {
+	font-weight: bold;
+}
+
+ul {
+	overflow: hidden;
+}
