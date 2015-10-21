@@ -17,7 +17,7 @@ body {
 	cursor: pointer;
 }
 
-.container.home {
+.home-container {
 	margin-right: 0px;
 	margin-left: 0px;
 }
@@ -35,6 +35,6 @@ card {
 	box-shadow: 2px 2px 2px #888;
 }
 
-card:hover {
+card:hover, .back-button:hover {
 	cursor: pointer;
 }
