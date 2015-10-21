@@ -25,7 +25,7 @@
 				<span class='col-xs-12 underline'>Researcher(s)</span>
 				<ul type='disc'>
 					<li ng-repeat="researcher in Project.researchers">
-						{{ researcher.last_name }}, {{ researcher.first_name }}
+						{{ researcher.last_name }}, {{ researcher.first_name }} <span class='pi'>{{ researcher.pi ? "(Primary)" : "" }}</span>
 					</li>
 				</ul>
 			</div>

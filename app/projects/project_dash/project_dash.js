@@ -21,7 +21,7 @@ angular.module('project.dash', [])
 	if(project.hours/project.hours_allotted >= .85) project.bar_color = 'progress-bar-danger';
 	else if(project.hours/project.hours_allotted >= .65) project.bar_color = 'progress-bar-warning';
 	
-	project.researchers = [{first_name: 'John', last_name: 'Smith'}, {first_name: 'Jane', last_name: 'Doe'}];
+	project.researchers = [{first_name: 'John', last_name: 'Smith', pi: true}, {first_name: 'Jane', last_name: 'Doe', pi: false}];
 	
 	project.grants = [{name: 'Test Grant', amount: 10000.00}]
 	
