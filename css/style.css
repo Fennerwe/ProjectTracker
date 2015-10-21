@@ -34,12 +34,12 @@ body {
 	align-items: center;
 }
 
-card {
-	height: 100px;
+card, new_project_card{
+	min-height: 100px;
 	box-shadow: 2px 2px 2px #888;
 }
 
-card:hover, .back-button:hover {
+card:hover, .back-button:hover, new_project_card:hover {
 	cursor: pointer;
 }
 
@@ -75,4 +75,8 @@ card:hover, .back-button:hover {
 
 .panel-heading {
 	text-align: center;
+}
+
+new_project_card .panel-body{
+	text-align:center;
 }

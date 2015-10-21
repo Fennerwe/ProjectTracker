@@ -12,5 +12,12 @@ angular.module('projects', [])
 		restrict: 'E',
 		templateUrl: 'app/projects/project-card.tpl.html'
 	};
+})
+
+.directive('newProjectCard', function(){
+	return {
+		restrict: 'E',
+		templateUrl: 'app/projects/new-project-card.tpl.html'
+	};
 });
 							
