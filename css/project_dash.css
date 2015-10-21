@@ -10,7 +10,7 @@
 	border-bottom: 1px solid #efefef;
 }
 
-.status-active {
+.project_dash_title_wrapper > .status-active {
 	color: #008f00;
 }
 

@@ -38,3 +38,19 @@ card {
 card:hover, .back-button:hover {
 	cursor: pointer;
 }
+
+.panel-heading.status-active {
+	background-color: #ebf3ff;
+}
+
+.panel-heading.status-halted {
+	background-color: #ffeb99;
+}
+
+.panel-heading.status-not-started {
+	background-color: #d49494;
+}
+
+.panel-heading.status-complete {
+	background-color: #99eb99;
+}
