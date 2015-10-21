@@ -2,6 +2,10 @@
 	border-bottom: 1px solid black;
 }
 
+.project-dash-container {
+	margin-top: 5px;
+}
+
 #project_desc {
 	font-size: 12px;
 }
@@ -10,7 +14,7 @@
 	border-bottom: 1px solid #efefef;
 }
 
-.project_dash_title_wrapper > .status-active {
+span.status-active {
 	color: #008f00;
 }
 

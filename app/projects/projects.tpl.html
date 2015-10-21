@@ -1,11 +1,13 @@
-<div class='container'>
-	<div class='row'>
+<div class='container project-container col-xs-12'>
+	<div class='row col-xs-12'>
 		<span class='back-button' ui-sref='home'><i class='fa fa-arrow-circle-o-left fa-4x'></i></span>
 	</div>
-	<div class='row' id='title_wrapper'>
+	<div class='row col-xs-12' id='projects_title_wrapper'>
 		<h2>Projects</h2>
 	</div>
-	<div class='row'>
-		<card ng-repeat='project in projects'></card>
+	<div class='container col-xs-12'>
+		<div class='row'>
+			<card ng-repeat='project in projects'></card>
+		</div>
 	</div>
 </div>
