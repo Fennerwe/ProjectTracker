@@ -1,5 +1,6 @@
 angular.module('app', ['ui.router',
-					   'projects']);
+					   'projects',
+					   'project.dash']);
 					   
 angular.module('app').config(function($stateProvider, $urlRouterProvider){
 	$urlRouterProvider.otherwise('/home');
@@ -17,5 +18,10 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider){
 			url: '/projects',
 			templateUrl: 'app/projects/projects.tpl.html',
 			controller: 'ProjectsCtrl'
+		})
+		.state('project', {
+			url: '/project/:projectID',
+			templateUrl: 'app/projects/project_dash/project-dash.tpl.html',
+			controller: 'projectDashCtrl'
 		});
 });
