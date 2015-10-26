@@ -1,4 +1,4 @@
-#project_dash_title_wrapper {
+#project_dash_title_wrapper > h2 {
 	border-bottom: 1px solid black;
 }
 
