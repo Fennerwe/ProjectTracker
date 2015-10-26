@@ -1,39 +1,17 @@
 angular.module('project.dash', [])
 
-.controller('projectDashCtrl', ['$scope', '$http', '$stateParams', function($scope, $http, $stateParams){
-	/*$http.get('get_project_dash.php')
-	.success(function(response){
-		$scope.Project = response;
-	});*/
+.controller('ProjectDashCtrl', ['$scope', '$http', '$stateParams', function($scope, $http, $stateParams){
 	
 	var project = {};
 	
-	project.title	= 'Test Project';
-	project.desc	= 'A test project to demo the project dashboard for the research project tracking app';
-	
-	project.status_text	= 'Active';
-	project.status_class = 'status-active';
-	
-	project.hours = 75;
-	project.hours_allotted = 80;
-	
-	project.bar_color = 'yellow';
-	if(project.hours/project.hours_allotted >= .85) project.bar_color = 'progress-bar-danger';
-	else if(project.hours/project.hours_allotted >= .65) project.bar_color = 'progress-bar-warning';
-	
-	project.researchers = [{first_name: 'John', last_name: 'Smith', pi: true}, {first_name: 'Jane', last_name: 'Doe', pi: false}];
-	
-	project.grants = [{name: 'Test Grant', amount: 10000.00}]
-	
-	project.contributing_users = [{name: 'Trey Fenner', hours_contributed: 15}]
-	
-	project.dep_server = 'ovzve25-56.appstate.edu'
-	
-	project.git_repo = 'https://vso.appstate.edu/tfs/ITS%20Research/_git/ResearchProjectTracker'
-	
-	project.start_date = Date.now();
-	
-	project.tech = ['AngularJS', 'HTML5', 'MySQL'];
-	
-	$scope.Project = project;
+	$http.get('app/projects/project_dash/get_project_dash.php?project_id=' + $stateParams.projectID)
+	.success(function(response){
+		project = response;
+		
+		project.bar_color = 'yellow';
+		if(project.hours/project.hours_allotted >= .85) project.bar_color = 'progress-bar-danger';
+		else if(project.hours/project.hours_allotted >= .65) project.bar_color = 'progress-bar-warning';
+		
+		$scope.Project = project;
+	});
 }]);
