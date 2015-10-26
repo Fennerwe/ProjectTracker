@@ -21,7 +21,6 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider){
 		})
 		.state('project', {
 			url: '/project/:projectID',
-			templateUrl: 'app/projects/project_dash/project-dash.tpl.html',
-			controller: 'projectDashCtrl'
+			templateUrl: 'app/projects/project_dash/project-dash.tpl.html'
 		});
 });
