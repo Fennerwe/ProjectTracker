@@ -16,7 +16,9 @@
 						p.completed_date as 'date_completed',
 						s.css_class as 'status_class',
 						s.status_text,
-						p.tech_used as 'tech'
+						p.tech_used as 'tech',
+						p.excess_hour_charges as 'excess_charges',
+						p.misc_info
 			  FROM		project_info as p,
 						status as s
 			  WHERE		p.status_id = s.status_id

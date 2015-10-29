@@ -47,20 +47,23 @@
 			</div>
 		</div>
 		<div class='row'>
-			<div class='col-xs-8'>
-				<span class='col-xs-12 underline'>Extra Info:</span>
-				<ul type='none'>
-					<li><span class='bold'>Deployment Server:</span> {{ Project.dep_server }}</li>
-					<li><span class='bold'>Git Repo:</span> {{ Project.git_repo }}</li>
-					<li><span class='bold'>Start Date:</span> {{ Project.date_started | date : shortDate }}</li>
-				</ul>
-			</div>
 			<div class='col-xs-4'>
 				<span class='col-xs-12 underline'>Tech Used:</span>
 				<ul type='disc'>
 					<li ng-repeat="t in Project.tech">
 						{{ t }}
 					</li>
+				</ul>
+			</div>
+			<div class='col-xs-8'>
+				<span class='col-xs-12 underline'>Extra Info:</span>
+				<ul type='none'>
+					<li ng-show="Project.dep_server"><span class='bold'>Deployment Server: </span> <a href='{{ "http\://" + Project.dep_server }}'>{{ Project.dep_server }}</a></li>
+					<li ng-show="Project.git_repo"><span class='bold'>Git Repo: </span> <a href='{{ "http\://" + Project.git_repo }}'>{{ Project.git_repo }}</a></li>
+					<li><span class='bold'>Start Date:</span> {{ Project.date_started | date : shortDate }}</li>
+					<li ng-show="Project.date_completed"><span class='bold'>Date Completed:</span> {{ Project.date_completed | date : shortDate }}</li>
+					<li ng-show="Project.excess_charges"><span class='bold'>Excess Charges:</span> {{ Project.excess_charges | currency }}</li>
+					<li ng-show="Project.misc_info"><span class='bold'>Misc Info:</span> {{ Project.misc_info }}</li>
 				</ul>
 			</div>
 		</div>

@@ -15,6 +15,18 @@
 }
 
 span.status-active {
+	color: #47d1ff;
+}
+
+span.status-halted {
+	color: #ffcc00;
+}
+
+span.status-not-started {
+	color: #cc0000;
+}
+
+span.status-completed {
 	color: #008f00;
 }
 
