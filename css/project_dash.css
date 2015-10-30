@@ -18,7 +18,7 @@ span.status-active {
 	color: #47d1ff;
 }
 
-span.status-halted {
+span.status-blocked {
 	color: #ffcc00;
 }
 
@@ -41,4 +41,8 @@ span.status-completed {
 
 ul {
 	overflow: hidden;
+}
+
+.edit_delete > i {
+	padding-left:2px; padding-right:2px;
 }

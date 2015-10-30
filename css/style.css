@@ -47,7 +47,7 @@ card:hover, .back-button:hover, new_project_card:hover {
 	background-color: #ebf3ff;
 }
 
-.panel-heading.status-halted {
+.panel-heading.status-blocked{
 	background-color: #ffeb99;
 }
 
