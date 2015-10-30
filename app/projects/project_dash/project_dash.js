@@ -8,7 +8,8 @@ angular.module('project.dash', [])
 	.success(function(response){
 		project = response;
 		
-		project.bar_color = 'yellow';
+		//sets contextual color on progress bar depending on where the project is
+		project.bar_color = '';
 		if(project.hours/project.hours_allotted >= .85) project.bar_color = 'progress-bar-danger';
 		else if(project.hours/project.hours_allotted >= .65) project.bar_color = 'progress-bar-warning';
 		
