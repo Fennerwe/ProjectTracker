@@ -43,6 +43,15 @@ ul {
 	overflow: hidden;
 }
 
-.edit_delete > i {
-	padding-left:2px; padding-right:2px;
+edit-delete {
+	display: none;
+}
+
+edit-delete i {
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+edit-delete i:hover {
+	cursor: pointer;
 }

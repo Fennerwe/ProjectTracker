@@ -38,7 +38,8 @@
 	//get info for researchers associated with the project
 	$query = "SELECT	r.researcher_first_name as 'first_name',
 						r.researcher_last_name as 'last_name',
-						rp.pi_flag as 'pi'
+						rp.pi_flag as 'pi',
+						rp.idx as 'r_ind'
 			  FROM		researcher r,
 						project_researchers rp
 		      WHERE		rp.project_id = $pid
@@ -55,7 +56,8 @@
 	//get info for grants the project falls under
 	$query = "SELECT	g.grant_name as 'name',
 						g.grant_desc as 'desc',
-						pg.partial_amount as 'amount'
+						pg.partial_amount as 'amount',
+						pg.idx as 'g_ind'
 			  FROM		funded_grant g,
 						project_grants pg
 			  WHERE		pg.project_id = $pid
@@ -72,7 +74,8 @@
 	
 	//get info on users who have contributed to the project
 	$query = "SELECT 	CONCAT(u.user_first_name, ' ', u.user_last_name) as 'name',
-						up.hours_contributed
+						up.hours_contributed,
+						up.idx as 'u_ind'
 			  FROM		users u,
 						user_project_contrib up
 			  WHERE		up.project_id = $pid
