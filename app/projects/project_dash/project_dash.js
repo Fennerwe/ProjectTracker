@@ -1,10 +1,18 @@
-angular.module('project.dash', [])
+angular.module('project.dash', ['ngAnimate',
+								'services.project_data'])
 
-.controller('ProjectDashCtrl', ['$scope', '$http', '$stateParams', function($scope, $http, $stateParams){
+.controller('ProjectDashCtrl', ['$scope', 'projectData', '$http', '$stateParams', function($scope, projectData, $http, $stateParams){
 	
-	var project = {};
+	projectData.getProject($stateParams.projectID).then(function(response){
+		$scope.Project = response.data;
+		
+		//sets contextual color on progress bar depending on where the project is
+		$scope.Project.bar_color = '';
+		if($scope.Project.hours/$scope.Project.hours_allotted >= .85) $scope.Project.bar_color = 'progress-bar-danger';
+		else if($scope.Project.hours/$scope.Project.hours_allotted >= .65) $scope.Project.bar_color = 'progress-bar-warning';
+	});
 	
-	$http.get('app/projects/project_dash/get_project_dash.php?project_id=' + $stateParams.projectID)
+	/*$http.get('app/projects/project_dash/get_project_dash.php?project_id=' + $stateParams.projectID)
 	.success(function(response){
 		project = response;
 		
@@ -14,7 +22,25 @@ angular.module('project.dash', [])
 		else if(project.hours/project.hours_allotted >= .65) project.bar_color = 'progress-bar-warning';
 		
 		$scope.Project = project;
-	});
+	});*/
+	
+	$scope.overlay = '';
+	
+	$scope.edit = function(type, idnum){
+		showOverlay('edit');
+	};
+	
+	$scope.deleteData = function(type, idnum){
+		showOverlay('delete');
+	};
+	
+	function showOverlay(oly){
+		$scope.overlay = oly;
+	};
+	
+	$scope.hideOverlay = function(){
+		$scope.overlay = '';
+	};
 }])
 
 //displays edit/delete icons for a single item
@@ -52,13 +78,13 @@ angular.module('project.dash', [])
 			type: '@',
 			idnum: '@'
 		},
-		controller: ["$scope", "$http", function($scope, $http){
+		controller: ['$scope', function($scope){
 			$scope.edit = function(type, idnum){
-				alert(type);
+				$scope.$parent.edit(type, idnum);
 			};
 			
 			$scope.deleteData = function(type, idnum){
-				alert(type);
+				$scope.$parent.deleteData(type, idnum);
 			};
 		}],
 		template: '<span><i class="fa fa-pencil-square-o" ng-click="edit(type, idnum)" ></i><i class="fa fa-times" ng-click="deleteData(type, idnum)"></i></span>'
