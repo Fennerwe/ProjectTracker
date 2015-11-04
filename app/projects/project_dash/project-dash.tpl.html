@@ -2,7 +2,7 @@
 	<div class='row col-xs-12'>
 		<span class='back-button' ui-sref='projects'><i class='fa fa-arrow-circle-o-left fa-4x'></i></span>
 	</div>
-	<div class='container col-xs-12' ng-controller='ProjectDashCtrl'>
+	<div class='container col-xs-12'>
 		<div id='project_dash_title_wrapper' class='row'>
 			<h2>
 				{{ Project.title }} <span class="{{ Project.status_class }}">({{ Project.status_text }})</span>
@@ -28,7 +28,7 @@
 				<span class='col-xs-12 underline'>Researcher(s):</span>
 				<ul type='disc'>
 					<li ng-repeat="researcher in Project.researchers">
-						{{ researcher.last_name }}, {{ researcher.first_name }} <span class='pi'>{{ researcher.pi ? "(Primary)" : "" }}</span>
+						{{ researcher.last_name }}, {{ researcher.first_name }} <span class='pi'>{{ researcher.pi == 1 ? "(Primary)" : "" }}</span>
 						<edit-delete showonhover type='researcher' idnum='{{ researcher.r_ind }}'></edit-delete>
 					</li>
 				</ul>
@@ -92,4 +92,13 @@
 			</div>
 		</div>
 	</div>
+</div>
+<div id='edit-overlay' ng-show="overlay == 'edit'" ng-click="hideOverlay()">
+	<div class='panel'>
+		
+	</div>
+</div>
+
+<div id='delete-overlay' ng-show="overlay == 'delete'" ng-click="hideOverlay()">
+
 </div>
