@@ -94,8 +94,14 @@
 	</div>
 </div>
 <div id='edit-overlay' ng-show="overlay == 'edit'" ng-click="hideOverlay()">
-	<div class='panel'>
-		
+	<div class='panel panel-default' ng-controller='ProjectEditCtrl'>
+		<div class='panel-body'>
+			
+		</div>
+		<div class='panel-footer'>
+			<button type='button' class='btn btn-success' ng-click='save()'>Save</button>
+			<button type='button' class='btn btn-default' ng-click='$parent.hideOverlay()'>Close</button>
+		</div>
 	</div>
 </div>
 
