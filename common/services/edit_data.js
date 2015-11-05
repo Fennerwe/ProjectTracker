@@ -6,7 +6,10 @@ angular.module('services.project_data', []).factory('projectData', ['$http', fun
 	function ProjectData(){
 		var project = {};
 		this.getProject = function(projectID){
-			return $http.get('app/projects/project_dash/get_project_dash.php?project_id=' + projectID, {cache: false});
+			return $http.get('app/projects/project_dash/get_project_dash.php?project_id=' + projectID, {cache: false}).then(function(response){
+				project = response.data;
+				return project;
+			});
 		};
 		
 		this.updateEditFields = function(type, idnum){
