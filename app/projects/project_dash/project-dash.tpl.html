@@ -99,10 +99,26 @@
 		</div>
 	</div>
 </div>
-<div id='edit-overlay' ng-show="overlay == 'edit'" ng-click="hideOverlay()">
+<div id='edit-overlay' ng-show="overlay == 'edit'">
 	<div class='panel panel-default' ng-controller='ProjectEditCtrl'>
 		<div class='panel-body'>
-			
+			<form ng-if="fields.action == 'p_info'">
+				<div class='form-group'>
+					<label for='p_title'>Title:</label>
+					<input class='form-control' type='text' ng-model='fields.title' id='p_title'>
+				</div>
+				<div class='form-group'>
+					<label for='p_status'>Status:</label>
+					<select class='form-control' id='p_status' ng-model='fields.status'>
+						<option ng-repeat='sc in fields.status_codes' {{ sc.status_text == fields.status ? 'selected' : '' }}>{{ sc.status_text }}</option>
+					</select>
+				</div>
+				<div class='form-group'>
+					<label for='p_desc'>Description:</label>
+					<textarea class='form-control' rows='4' cols='40' ng-model='fields.desc' id='p_desc'>{{ fields.desc }}</textarea>
+				</div>
+				<button type='button' class='btn btn-block btn-danger' ng-click='delete()'>Delete Project</button
+			</form>
 		</div>
 		<div class='panel-footer'>
 			<button type='button' class='btn btn-success' ng-click='save()'>Save</button>

@@ -25,8 +25,8 @@ angular.module('project.dash', ['ngAnimate',
 	
 	$scope.overlay = '';
 	
-	$scope.edit = function(type, idnum){
-		projectData.updateEditFields(type, idnum);
+	$scope.edit = function(type){
+		projectData.updateEditFields(type);
 		showOverlay('edit');
 	};
 	
@@ -39,8 +39,19 @@ angular.module('project.dash', ['ngAnimate',
 	};
 }])
 
-.controller('ProjectEditCtrl', ['$scope', '$http', 'projectData', function($scope, $http, $projectData){
+.controller('ProjectEditCtrl', ['$scope', '$http', 'projectData', function($scope, $http, projectData){
+	$scope.$watch(
+		function(){
+			return projectData.getEditFields();
+		},
+		function(newVal){
+			$scope.fields = projectData.getEditFields();
+		}
+	);
 	
+	$scope.save = function(){
+		projectData.saveChanges();
+	};
 }])
 
 //displays edit/delete icons for a single item
