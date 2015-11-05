@@ -43,20 +43,20 @@ ul {
 	overflow: hidden;
 }
 
-edit-delete {
+edit {
 	display: none;
 }
 
-edit-delete i {
+edit i {
 	padding-left: 2px;
 	padding-right: 2px;
 }
 
-edit-delete i:hover {
+edit i:hover {
 	cursor: pointer;
 }
 
-#edit-overlay, #delete-overlay {
+#edit-overlay {
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -73,7 +73,7 @@ edit-delete i:hover {
 	margin-right: auto;
 }
 
-#edit-overlay:after, #delete-overlay:after {
+#edit-overlay:after {
 	position: absolute;
 	top:0px;
 	left:0px;

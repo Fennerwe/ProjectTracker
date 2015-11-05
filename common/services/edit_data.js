@@ -25,20 +25,6 @@ angular.module('services.project_data', []).factory('projectData', ['$http', fun
 			
 			editFields = fields;
 		};
-		
-		this.updateDeleteFields = function(type, idnum){
-			var fields;
-			switch(type){
-				case 'p_info':
-				case 'researcher':
-				case 'grant':
-				case 'user':
-				case 'tech':
-				case 'extra':
-			}
-			
-			deleteFields = fields;
-		};
 	};
 	
 	return new ProjectData();

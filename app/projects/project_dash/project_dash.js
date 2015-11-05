@@ -30,11 +30,6 @@ angular.module('project.dash', ['ngAnimate',
 		showOverlay('edit');
 	};
 	
-	$scope.deleteData = function(type, idnum){
-		projectData.updateDeleteFields(type, idnum);
-		showOverlay('delete');
-	};
-	
 	function showOverlay(oly){
 		$scope.overlay = oly;
 	};
@@ -76,22 +71,17 @@ angular.module('project.dash', ['ngAnimate',
     };
 })
 
-.directive('editDelete', function(){
+.directive('edit', function(){
 	return {
 		restrict: 'E',
 		scope: {
 			type: '@',
-			idnum: '@'
 		},
 		controller: ['$scope', function($scope){
-			$scope.edit = function(type, idnum){
-				$scope.$parent.edit(type, idnum);
-			};
-			
-			$scope.deleteData = function(type, idnum){
-				$scope.$parent.deleteData(type, idnum);
+			$scope.edit = function(type){
+				$scope.$parent.edit(type);
 			};
 		}],
-		template: '<span><i class="fa fa-pencil-square-o" ng-click="edit(type, idnum)" ></i><i class="fa fa-times" ng-click="deleteData(type, idnum)"></i></span>'
+		template: '<span><i class="fa fa-pencil-square-o" ng-click="edit(type)" ></i></span>'
 	};
 });

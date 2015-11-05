@@ -6,7 +6,7 @@
 		<div id='project_dash_title_wrapper' class='row'>
 			<h2>
 				{{ Project.title }} <span class="{{ Project.status_class }}">({{ Project.status_text }})</span>
-				<edit-delete showonhover type='p_info' idnum=0></edit-delete>
+				<edit showonhover type='p_info'></edit>
 			</h2>
 		</div>
 		<div id='project_desc' class='row'>
@@ -25,29 +25,35 @@
 		</div>
 		<div class='row'>
 			<div class='col-xs-4'>
-				<span class='col-xs-12 underline'>Researcher(s):</span>
+				<span class='col-xs-12 underline'>
+					Researcher(s):
+					<edit showonhover2 type='researcher'></edit>
+				</span>
 				<ul type='disc'>
 					<li ng-repeat="researcher in Project.researchers">
 						{{ researcher.last_name }}, {{ researcher.first_name }} <span class='pi'>{{ researcher.pi == 1 ? "(Primary)" : "" }}</span>
-						<edit-delete showonhover type='researcher' idnum='{{ researcher.r_ind }}'></edit-delete>
 					</li>
 				</ul>
 			</div>
 			<div class='col-xs-4'>
-				<span class='col-xs-12 underline'>Grant(s):</span>
+				<span class='col-xs-12 underline'>
+					Grant(s):
+					<edit showonhover2 type='grant'></edit>
+				</span>
 				<ul type='disc'>
 					<li ng-repeat="grant in Project.grants">
 						{{ grant.name }} ({{ grant.amount | currency }})
-						<edit-delete showonhover type='grant' idnum='{{ grant.g_ind }}'</edit-delete>
 					</li>
 				</ul>
 			</div>
 			<div class='col-xs-4'>
-				<span class='col-xs-12 underline'>Contributor(s):</span>
+				<span class='col-xs-12 underline'>
+					Contributor(s):
+					<edit showonhover2 type='user'></edit>
+				</span>
 				<ul type='disc'>
 					<li ng-repeat="user in Project.contributing_users">
 						{{ user.name }} ({{ user.hours_contributed | number : 2}})
-						<edit-delete showonhover type='user' idnum='{{ user.u_ind }}'></edit-delete>
 					</li>
 				</ul>
 			</div>
@@ -56,7 +62,7 @@
 			<div class='col-xs-4'>
 				<span class='col-xs-12 underline'>
 					Tech Used:
-					<edit-delete showonhover2 type='tech' idnum=0></edit-delete>
+					<edit showonhover2 type='tech' idnum=0></edit>
 				</span>
 				<ul type='disc'>
 					<li ng-repeat="t in Project.tech">
@@ -67,7 +73,7 @@
 			<div class='col-xs-8'>
 				<span class='col-xs-12 underline'>
 					Extra Info:
-					<edit-delete  showonhover2 type='extra' idnum=0></edit-delete>
+					<edit  showonhover2 type='extra' idnum=0></edit>
 				</span>
 				<ul type='none'>
 					<li ng-show="Project.dep_server">
@@ -103,8 +109,4 @@
 			<button type='button' class='btn btn-default' ng-click='$parent.hideOverlay()'>Close</button>
 		</div>
 	</div>
-</div>
-
-<div id='delete-overlay' ng-show="overlay == 'delete'" ng-click="hideOverlay()">
-
 </div>
