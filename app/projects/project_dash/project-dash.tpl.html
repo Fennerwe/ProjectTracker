@@ -109,8 +109,8 @@
 				</div>
 				<div class='form-group'>
 					<label for='p_status'>Status:</label>
-					<select class='form-control' id='p_status' ng-model='fields.status'>
-						<option ng-repeat='sc in fields.status_codes' {{ sc.status_text == fields.status ? 'selected' : '' }}>{{ sc.status_text }}</option>
+					<select class='form-control' id='p_status' ng-model='fields.status' ng-options='sc.status_text for sc in status_codes track by sc.status_text'>
+						<!--<option ng-repeat='sc in status_codes' {{ sc.status_text == fields.status ? 'selected' : '' }}>{{ sc.status_text }}</option>-->
 					</select>
 				</div>
 				<div class='form-group'>

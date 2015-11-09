@@ -6,7 +6,8 @@
 	$rslt = array();
 	
 	//get the info related specifically to the project
-	$query = "SELECT	p.project_name as 'title',
+	$query = "SELECT	p.project_id as 'pid',
+						p.project_name as 'title',
 						p.project_description as 'desc',
 						p.hours_used as 'hours',
 						p.hours_allotted as 'hours_allotted',

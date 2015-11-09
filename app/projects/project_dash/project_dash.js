@@ -40,6 +40,10 @@ angular.module('project.dash', ['ngAnimate',
 }])
 
 .controller('ProjectEditCtrl', ['$scope', '$http', 'projectData', function($scope, $http, projectData){
+	$http.get('app/projects/project_dash/get_status_codes.php', {cache: true}).then(function(response){
+		$scope.status_codes = response.data;
+	});
+			
 	$scope.$watch(
 		function(){
 			return projectData.getEditFields();
@@ -51,6 +55,7 @@ angular.module('project.dash', ['ngAnimate',
 	
 	$scope.save = function(){
 		projectData.saveChanges();
+		$scope.$parent.hideOverlay();
 	};
 }])
 
