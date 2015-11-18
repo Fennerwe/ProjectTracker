@@ -22,6 +22,12 @@
 							  WHERE		idx = $k";
 			}
 			break;
+		case 'grants':
+			foreach($grants as $g){
+				$queries[] = "UPDATE	project_grants
+							  SET		partial_amount = $g[amount]
+							  WHERE		idx = $g[g_ind]";
+			}
 	}
 	
 	foreach($queries as $query){

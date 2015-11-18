@@ -38,7 +38,7 @@
 			<div class='col-xs-4'>
 				<span class='col-xs-12 underline'>
 					Grant(s):
-					<edit showonhover2 type='grant'></edit>
+					<edit showonhover2 type='grants'></edit>
 				</span>
 				<ul type='disc'>
 					<li ng-repeat="grant in Project.grants">
@@ -49,7 +49,7 @@
 			<div class='col-xs-4'>
 				<span class='col-xs-12 underline'>
 					Contributor(s):
-					<edit showonhover2 type='user'></edit>
+					<edit showonhover2 type='users'></edit>
 				</span>
 				<ul type='disc'>
 					<li ng-repeat="user in Project.contributing_users">
@@ -119,10 +119,21 @@
 			</form>
 			<form ng-if="fields.action == 'researchers'">
 				<span class='col-xs-6 underline'>Name:</span><span class='col-xs-3 center underline'>Primary</span><span class='col-xs-3 center underline'>Delete</span>
-				<span ng-repeat='r in fields.researchers'>
+				<div ng-repeat='r in fields.researchers'>
 					<span class='col-xs-6'>{{ r.last_name}}, {{ r.first_name }}</span>
 					<span class='col-xs-3 center'><input type='checkbox' ng-model='fields.primaries[r.r_ind]'ng-true-value='1' ng-false-value='0' /></span>
-					<span class='col-xs-3 center' style='color:red;'><i class='fa fa-times' ng-click='delete(r.r_ind)'></i><span>
+					<span class='col-xs-3 center' style='color:red;'><i class='fa fa-times' ng-click='delete(r.r_ind)'></i></span>
+				</div>
+			</form>
+			<form ng-if="fields.action == 'grants'" class='form-inline'>
+				<span class='col-xs-6 underline'>Name:</span><span class='col-xs-3 underline'>Amount:</span><span class='col-xs-3 center underline'>Delete</span>
+				<span ng-repeat='g in fields.grants'>
+					<span class='col-xs-6'>{{ g.name }}</span>
+					<div class='col-xs-3 input-group' style='float:left;'>
+						<span class='input-group-addon'>$</span>
+						<input type='text' class='form-control' ng-model='g.amount' />
+					</div>
+					<span class='col-xs-3 center' style='color:red;'><i class='fa fa-times' ng-click='delete(g.g_ind)'></i></span>
 				</span>
 			</form>
 		</div>

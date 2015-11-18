@@ -39,25 +39,8 @@
 			$rslt['date_completed'] = $rslt['date_completed'] ? date_format(date_create($rslt['date_completed']), "F d, Y") : "";
 			
 			$rslt['researchers'] = get_researchers($pid, $con);
-			
-			//get info for grants the project falls under
-			$query = "SELECT	g.grant_name as 'name',
-								g.grant_desc as 'desc',
-								pg.partial_amount as 'amount',
-								pg.idx as 'g_ind'
-					  FROM		funded_grant g,
-								project_grants pg
-					  WHERE		pg.project_id = $pid
-								AND pg.grant_id = g.grant_id
-					  ORDER 	BY g.grant_name";
-					  
-			$grants = $con->query($query);
-			
-			$grants_array = array(); //initialize to empty array in case no grants have been added
-			foreach($grants->fetchAll(PDO::FETCH_ASSOC) as $row){
-				$grants_array[] = $row;
-			}
-			$rslt['grants'] = $grants_array;
+						
+			$rslt['grants'] = get_grants($pid, $con);
 			
 			//get info on users who have contributed to the project
 			$query = "SELECT 	CONCAT(u.user_first_name, ' ', u.user_last_name) as 'name',
@@ -80,6 +63,8 @@
 		case 'researchers':
 			$rslt = get_researchers($pid, $con);
 			break;
+		case 'grants':
+			$rslt = get_grants($pid, $con);
 	}
 	
 	echo json_encode($rslt);
@@ -98,11 +83,33 @@
 							
 		$researchers = $con->query($query);
 		
-		$researcher_array = array(); //initialize to empty array in case no researchers have been added to the project yet
+		$researcher_array = array();
 		foreach($researchers->fetchAll(PDO::FETCH_ASSOC) as $row){
 			$researcher_array[] = $row;
 		}
 		
 		return $researcher_array;
+	}
+	
+	function get_grants($pid, $con){
+		//get info for grants the project falls under
+		$query = "SELECT	g.grant_name as 'name',
+							g.grant_desc as 'desc',
+							pg.partial_amount as 'amount',
+							pg.idx as 'g_ind'
+				  FROM		funded_grant g,
+							project_grants pg
+				  WHERE		pg.project_id = $pid
+							AND pg.grant_id = g.grant_id
+				  ORDER 	BY g.grant_name";
+				  
+		$grants = $con->query($query);
+		
+		$grants_array = array();
+		foreach($grants->fetchAll(PDO::FETCH_ASSOC) as $row){
+			$grants_array[] = $row;
+		}
+		
+		return $grants_array;
 	}
 ?>

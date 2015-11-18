@@ -29,6 +29,8 @@ angular.module('services.project_data', []).factory('projectData', ['$http', fun
 					});
 					break;
 				case 'grants':
+					fields.grants = project.grants;
+					break;
 				case 'users':
 				case 'tech':
 				case 'extra':
@@ -56,6 +58,12 @@ angular.module('services.project_data', []).factory('projectData', ['$http', fun
 					$http.get('app/projects/project_dash/get_project_dash.php?r=researchers&project_id=' + pid).then(function(response){
 						project.researchers = response.data;
 					});
+					break;
+				case 'grants':
+					$http.get('app/projects/project_dash/get_project_dash.php?r=grants&project_id=' + pid).then(function(response){
+						project.grants = response.data;
+					});
+					break;
 			}
 		};
 	};
