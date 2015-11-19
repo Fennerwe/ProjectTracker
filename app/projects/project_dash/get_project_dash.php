@@ -42,29 +42,26 @@
 						
 			$rslt['grants'] = get_grants($pid, $con);
 			
-			//get info on users who have contributed to the project
-			$query = "SELECT 	CONCAT(u.user_first_name, ' ', u.user_last_name) as 'name',
-								up.hours_contributed,
-								up.idx as 'u_ind'
-					  FROM		users u,
-								user_project_contrib up
-					  WHERE		up.project_id = $pid
-								AND up.user_id = u.user_id
-					  ORDER		BY up.hours_contributed";
-			
-			$users = $con->query($query);
-			
-			$contr_users_arr = array(); //initialize to empty array in case no users have been added yet
-			foreach($users->fetchAll(PDO::FETCH_ASSOC) as $row){
-				$contr_users_arr[] = $row;
-			}
-			$rslt['contributing_users'] = $contr_users_arr;
+			$rslt['contributing_users'] = get_users($pid, $con);
 			break;
 		case 'researchers':
 			$rslt = get_researchers($pid, $con);
 			break;
 		case 'grants':
 			$rslt = get_grants($pid, $con);
+			break;
+		case 'users':
+			$rslt['users'] = get_users($pid, $con);
+			
+			//get the new hours since it might've been updated
+			$query = "SELECT	hours_used
+					  FROM		project_info
+					  WHERE		project_id = $pid";
+					  
+			$hours = $con->query($query);
+			
+			$rslt['hours'] = $hours->fetch(PDO::FETCH_ASSOC)['hours_used'];
+			break;
 	}
 	
 	echo json_encode($rslt);
@@ -111,5 +108,26 @@
 		}
 		
 		return $grants_array;
+	}
+	
+	function get_users($pid, $con){
+		//get info on users who have contributed to the project
+		$query = "SELECT 	CONCAT(u.user_first_name, ' ', u.user_last_name) as 'name',
+							up.hours_contributed,
+							up.idx as 'u_ind'
+				  FROM		users u,
+							user_project_contrib up
+				  WHERE		up.project_id = $pid
+							AND up.user_id = u.user_id
+				  ORDER		BY up.hours_contributed";
+		
+		$users = $con->query($query);
+		
+		$contr_users_arr = array(); //initialize to empty array in case no users have been added yet
+		foreach($users->fetchAll(PDO::FETCH_ASSOC) as $row){
+			$contr_users_arr[] = $row;
+		}
+		
+		return $contr_users_arr;
 	}
 ?>

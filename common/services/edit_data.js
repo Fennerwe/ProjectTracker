@@ -9,8 +9,16 @@ angular.module('services.project_data', []).factory('projectData', ['$http', fun
 			pid = projectID;
 			return $http.get('app/projects/project_dash/get_project_dash.php?r=full&project_id=' + pid, {cache: false}).then(function(response){
 				project = response.data;
+				setProjectBarColor();
 				return project;
 			});
+		};
+		
+		var setProjectBarColor = function(){
+			//sets contextual color on progress bar depending on where the project is
+			project.bar_color = '';
+			if(project.hours/project.hours_allotted >= .85) project.bar_color = 'progress-bar-danger';
+			else if(project.hours/project.hours_allotted >= .65) project.bar_color = 'progress-bar-warning';
 		};
 		
 		this.updateEditFields = function(type){
@@ -32,6 +40,8 @@ angular.module('services.project_data', []).factory('projectData', ['$http', fun
 					fields.grants = project.grants;
 					break;
 				case 'users':
+					fields.users = project.contributing_users;
+					break;
 				case 'tech':
 				case 'extra':
 			}
@@ -55,15 +65,21 @@ angular.module('services.project_data', []).factory('projectData', ['$http', fun
 					project.desc = editFields.desc;
 					break;
 				case 'researchers':
-					$http.get('app/projects/project_dash/get_project_dash.php?r=researchers&project_id=' + pid).then(function(response){
+					$http.get('app/projects/project_dash/get_project_dash.php?r=researchers&project_id=' + pid, {cache: false}).then(function(response){
 						project.researchers = response.data;
 					});
 					break;
 				case 'grants':
-					$http.get('app/projects/project_dash/get_project_dash.php?r=grants&project_id=' + pid).then(function(response){
+					$http.get('app/projects/project_dash/get_project_dash.php?r=grants&project_id=' + pid, {cache: false}).then(function(response){
 						project.grants = response.data;
 					});
 					break;
+				case 'users':
+					$http.get('app/projects/project_dash/get_project_dash.php?r=users&project_id=' + pid, {cache: false}).then(function(response){
+						project.users = response.data['users'];
+						project.hours = response.data['hours'];
+						setProjectBarColor();
+					});
 			}
 		};
 	};

@@ -5,23 +5,7 @@ angular.module('project.dash', ['ngAnimate',
 	
 	projectData.getProject($stateParams.projectID).then(function(data){
 		$scope.Project = data;
-		//sets contextual color on progress bar depending on where the project is
-		$scope.Project.bar_color = '';
-		if($scope.Project.hours/$scope.Project.hours_allotted >= .85) $scope.project.bar_color = 'progress-bar-danger';
-		else if($scope.Project.hours/$scope.Project.hours_allotted >= .65) $scope.Project.bar_color = 'progress-bar-warning';
 	});
-
-	/*$http.get('app/projects/project_dash/get_project_dash.php?project_id=' + $stateParams.projectID)
-	.success(function(response){
-		project = response;
-		
-		//sets contextual color on progress bar depending on where the project is
-		project.bar_color = '';
-		if(project.hours/project.hours_allotted >= .85) project.bar_color = 'progress-bar-danger';
-		else if(project.hours/project.hours_allotted >= .65) project.bar_color = 'progress-bar-warning';
-		
-		$scope.Project = project;
-	});*/
 	
 	$scope.overlay = '';
 	

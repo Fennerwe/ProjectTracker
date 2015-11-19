@@ -136,6 +136,14 @@
 					<span class='col-xs-3 center' style='color:red;'><i class='fa fa-times' ng-click='delete(g.g_ind)'></i></span>
 				</span>
 			</form>
+			<form ng-if="fields.action == 'users'">
+				<span class='col-xs-6 underline'>Name:</span><span class='col-xs-3 underline'>Hours:</span><span class='col-xs-3 center underline'>Delete</span>
+				<span ng-repeat='u in fields.users'>
+					<span class='col-xs-6'>{{ u.name }}</span>
+					<span class='col-xs-3'><input type='text' class='form-control' ng-model='u.hours_contributed' /></span>
+					<span class='col-xs-3 center' style='color:red;'><i class='fa fa-times' ng-click='delete(u.u_ind)'></i></span>
+				</span>
+			</form>
 		</div>
 		<div class='panel-footer'>
 			<button type='button' class='btn btn-success' ng-click='save()'>Save</button>

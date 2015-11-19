@@ -9,11 +9,12 @@
 		case 'p_info':
 			$status_text = $status['status_text'];
 			$queries[] = "UPDATE 	project_info
-						   SET		project_name = '$title',
+						  SET		project_name = '$title',
 									project_description = '$desc',
 									status_id = (SELECT	s.status_id
 												 FROM	status s
-												 WHERE	s.status_text = '$status_text')";
+												 WHERE	s.status_text = '$status_text')
+						  WHERE		project_id = $pid";
 			break;
 		case 'researchers':
 			foreach($primaries as $k => $v){
@@ -28,6 +29,22 @@
 							  SET		partial_amount = $g[amount]
 							  WHERE		idx = $g[g_ind]";
 			}
+			break;
+		case 'users':
+			$hours = 0;
+			foreach($users as $u){
+				$hours += $u['hours_contributed'];
+				
+				$queries[] = "UPDATE	user_project_contrib
+							  SET		hours_contributed = $u[hours_contributed]
+							  WHERE		idx = $u[u_ind]";
+			}
+			
+			$queries[] = "UPDATE	project_info
+						  SET		hours_used = $hours
+						  WHERE		project_id = $pid";
+			
+			break;
 	}
 	
 	foreach($queries as $query){
