@@ -88,3 +88,13 @@ edit i:hover, .fa-times {
 .center {
 	text-align: center;
 }
+
+#tech_edit > div {
+	display: flex;
+	align-items: center;
+	padding-top: 10px;
+}
+
+#tech_edit .fa-times {
+	padding-left: 5px;
+}

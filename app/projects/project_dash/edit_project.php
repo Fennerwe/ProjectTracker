@@ -45,6 +45,19 @@
 						  WHERE		project_id = $pid";
 			
 			break;
+		case 'tech':
+			$tech_arr = array();
+			
+			foreach($tech as $v){
+				array_push($tech_arr, $v['value']);
+			}
+			
+			$techstring = implode('|', $tech_arr);
+			
+			$queries[] = "UPDATE	project_info
+						  SET		tech_used = '$techstring'
+						  WHERE		project_id = $pid";
+			break;
 	}
 	
 	foreach($queries as $query){

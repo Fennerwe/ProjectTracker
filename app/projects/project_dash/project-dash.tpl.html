@@ -62,7 +62,7 @@
 			<div class='col-xs-4'>
 				<span class='col-xs-12 underline'>
 					Tech Used:
-					<edit showonhover2 type='tech' idnum=0></edit>
+					<edit showonhover2 type='tech'></edit>
 				</span>
 				<ul type='disc'>
 					<li ng-repeat="t in Project.tech">
@@ -73,7 +73,7 @@
 			<div class='col-xs-8'>
 				<span class='col-xs-12 underline'>
 					Extra Info:
-					<edit  showonhover2 type='extra' idnum=0></edit>
+					<edit  showonhover2 type='extra'></edit>
 				</span>
 				<ul type='none'>
 					<li ng-show="Project.dep_server">
@@ -143,6 +143,12 @@
 					<span class='col-xs-3'><input type='text' class='form-control' ng-model='u.hours_contributed' /></span>
 					<span class='col-xs-3 center' style='color:red;'><i class='fa fa-times' ng-click='delete(u.u_ind)'></i></span>
 				</span>
+			</form>
+			<form id='tech_edit' ng-if="fields.action == 'tech'">
+				<div ng-repeat='t in fields.tech'>
+					<div><input type='text' class='form-control' ng-model='t.value'></div>
+					<span style='color: red;'><i class='fa fa-times' ng-click='delete(t)'></i></span>
+				</div>
 			</form>
 		</div>
 		<div class='panel-footer'>
