@@ -80,3 +80,7 @@ card:hover, .back-button:hover, new_project_card:hover {
 new_project_card .panel-body{
 	text-align:center;
 }
+
+#second_row {
+	padding-top: 50px;
+}
