@@ -49,6 +49,13 @@ angular.module('services.project_data', []).factory('projectData', ['$http', fun
 					});
 					break;
 				case 'extra':
+					fields.dep_server = project.dep_server;
+					fields.git_repo = project.git_repo;
+					fields.date_started = project.date_started;
+					fields.date_completed = project.date_completed;
+					fields.excess_charges = project.excess_charges;
+					fields.misc_info = project.misc_info;
+					break;
 			}
 			
 			fields.action = type;
@@ -91,6 +98,14 @@ angular.module('services.project_data', []).factory('projectData', ['$http', fun
 						editFields.tech.forEach(function(v){
 							project.tech.push(v.value);
 						});
+						break;
+					case 'extra':
+						project.dep_server = editFields.dep_server;
+						project.git_repo = editFields.git_repo;
+						project.date_started = editFields.date_started;
+						project.date_completed = editFields.date_completed;
+						project.excess_charges = editFields.excess_charges;
+						project.misc_info = editFields.misc_info;
 						break;
 				}
 			});

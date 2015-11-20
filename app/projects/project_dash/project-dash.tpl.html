@@ -100,7 +100,7 @@
 	</div>
 </div>
 <div id='edit-overlay' ng-show="overlay == 'edit'">
-	<div class='panel panel-default' ng-controller='ProjectEditCtrl'>
+	<div class='panel panel-default {{ $parent.colsize }}' ng-controller='ProjectEditCtrl'>
 		<div class='panel-body'>
 			<form ng-if="fields.action == 'p_info'">
 				<div class='form-group'>
@@ -148,6 +148,41 @@
 				<div ng-repeat='t in fields.tech'>
 					<div><input type='text' class='form-control' ng-model='t.value'></div>
 					<span style='color: red;'><i class='fa fa-times' ng-click='delete(t)'></i></span>
+				</div>
+			</form>
+			<form id='extra_edit' ng-if="fields.action == 'extra'">
+				<div class='form-group'>
+					<label for='edit_dep_server' class='control-label'>Deployment Server:</label>
+					<div class='input-group'>
+						<span class='input-group-addon'>http(s)://</span>
+						<input id='edit_dep_server' type='text' class='form-control' ng-model='fields.dep_server' />
+					</div>
+				</div>
+				<div class='form-group'>
+					<label for='edit_git_repo' class='control-label'>Git Repo:</label>
+					<div class='input-group'>
+						<span class='input-group-addon'>http(s)://</span>
+						<input id='edit_git_repo' type='text' class='form-control' ng-model='fields.git_repo' />
+					</div>
+				</div>
+				<div class='form-group'>
+					<label for='edit_start_date' class='control-label'>Start Date:</label>
+					<input id='edit_start_date' type='text' class='form-control' ng-model='fields.date_started' />
+				</div>
+				<div class='form-group'>
+					<label for='edit_completed_date' class='control-label'>Date Completed:</label>
+					<input id='edit_completed_date' type='text' class='form-control' ng-model='fields.date_completed' />
+				</div>
+				<div class='form-group'>
+					<label for='edit_excess_charges' class='control-label'>Excess Charges:</label>
+					<div class='input-group'>
+						<span class='input-group-addon'>$</span>
+						<input id='edit_excess_charges' type='text' class='form-control' ng-model='fields.excess_charges' />
+					</div>
+				</div>
+				<div class='form-group'>
+					<label for='edit_misc_info' class='control-label'>Misc Info:</label>
+					<textarea class='form-control' rows='4' cols='40' ng-model='fields.misc_info'></textarea>
 				</div>
 			</form>
 		</div>

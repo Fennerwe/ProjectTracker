@@ -58,6 +58,23 @@
 						  SET		tech_used = '$techstring'
 						  WHERE		project_id = $pid";
 			break;
+		case 'extra':
+			$start_date_str = $date_started ? "'".date("Y-m-d H:i:s", strtotime($date_started))."'" : 'null';
+			$comp_date_str = $date_completed ? "'".date("Y-m-d H:i:s", strtotime($date_completed))."'" : 'null';
+			$dep_server = $dep_server ? $dep_server : 'null';
+			$git_repo = $git_repo ? $git_repo : 'null';
+			$excess_charges = $excess_charges ? $excess_charges : 'null';
+			$misc_info = $misc_info ? $misc_info : 'null';
+		
+			$queries[] = "UPDATE	project_info
+						  SET		deployment_server = '$dep_server',
+									git_repo = '$git_repo',
+									start_date = $start_date_str,
+									completed_date = $comp_date_str,
+									excess_hour_charges = $excess_charges,
+									misc_info = '$misc_info'
+						  WHERE		project_id = $pid";
+			break;
 	}
 	
 	foreach($queries as $query){
