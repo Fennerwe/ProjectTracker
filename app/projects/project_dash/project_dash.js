@@ -75,7 +75,7 @@ angular.module('project.dash', ['ngAnimate',
 	return {
 		restrict: 'E',
 		scope: {
-			type: '@',
+			type: '@'
 		},
 		controller: ['$scope', function($scope){
 			$scope.edit = function(type){
@@ -83,5 +83,15 @@ angular.module('project.dash', ['ngAnimate',
 			};
 		}],
 		template: '<span><i class="fa fa-pencil-square-o" ng-click="edit(type)" ></i></span>'
+	};
+})
+
+.directive('addButton', function(){
+	return {
+		restrict: 'E',
+		scope: {
+			type: '@'
+		},
+		template: '<button type="button" class="btn btn-success btn-xs" ng-click="$parent.add(type)">Add<span style="margin-left: 5px;"><i class="fa fa-plus-square"></i></span></button>'
 	};
 });

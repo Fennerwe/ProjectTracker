@@ -33,6 +33,9 @@
 					<li ng-repeat="researcher in Project.researchers">
 						{{ researcher.last_name }}, {{ researcher.first_name }} <span class='pi'>{{ researcher.pi == 1 ? "(Primary)" : "" }}</span>
 					</li>
+					<li>
+						<add-button showonhover2 type='researcher'></add-button>
+					</li>
 				</ul>
 			</div>
 			<div class='col-xs-4'>
@@ -44,6 +47,9 @@
 					<li ng-repeat="grant in Project.grants">
 						{{ grant.name }} ({{ grant.amount | currency }})
 					</li>
+					<li>
+						<add-button showonhover2 type='grant'></add-button>
+					</li>
 				</ul>
 			</div>
 			<div class='col-xs-4'>
@@ -54,6 +60,9 @@
 				<ul type='disc'>
 					<li ng-repeat="user in Project.contributing_users">
 						{{ user.name }} ({{ user.hours_contributed | number : 2}})
+					</li>
+					<li>
+						<add-button showonhover2 type='user'></add-button>
 					</li>
 				</ul>
 			</div>
@@ -67,6 +76,9 @@
 				<ul type='disc'>
 					<li ng-repeat="t in Project.tech">
 						{{ t }}
+					</li>
+					<li>
+						<add-button showonhover2 type='tech'></add-button>
 					</li>
 				</ul>
 			</div>
