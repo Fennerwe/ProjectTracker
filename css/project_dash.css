@@ -106,3 +106,7 @@ edit i:hover, .fa-times {
 li:last-child {
 	list-style: none;
 }
+
+#researcher_add_form {
+	padding-top: 10px;
+}

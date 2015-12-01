@@ -78,14 +78,19 @@
 				  WHERE		rp.project_id = $pid
 							AND r.researcher_id = rp.researcher_id";
 							
-		$researchers = $con->query($query);
+		if($researchers = $con->query($query)){
 		
-		$researcher_array = array();
-		foreach($researchers->fetchAll(PDO::FETCH_ASSOC) as $row){
-			$researcher_array[] = $row;
+			$researcher_array = array();
+			foreach($researchers->fetchAll(PDO::FETCH_ASSOC) as $row){
+				$researcher_array[] = $row;
+			}
+			
+			return $researcher_array;
 		}
-		
-		return $researcher_array;
+		else {
+			print_r($con->errorInfo());
+			echo $query;
+		}
 	}
 	
 	function get_grants($pid, $con){

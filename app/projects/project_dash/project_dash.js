@@ -48,7 +48,13 @@ angular.module('project.dash', ['ngAnimate',
 	};
 }])
 
-.controller('ProjectAddCtrl', ['$scope', 'projectData', function($scope, projectData){
+.controller('ProjectAddCtrl', ['$scope', 'projectData', '$http', function($scope, projectData, $http){
+	
+	$scope.d = {select_type: 'new'};
+	
+	$http.get('app/projects/project_dash/get_existing.php?pid=' + projectData.pid, {cache: false}).then(function(response){
+		$scope.existing_data = response.data;
+	});
 	
 	$scope.$watch(
 		function(){
@@ -60,7 +66,7 @@ angular.module('project.dash', ['ngAnimate',
 	);
 	
 	$scope.save = function(){
-		projectData.addData();
+		projectData.addData($scope.d);
 		$scope.$parent.hideOverlay();
 	};
 }])
