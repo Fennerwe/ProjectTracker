@@ -34,7 +34,7 @@
 						{{ researcher.last_name }}, {{ researcher.first_name }} <span class='pi'>{{ researcher.pi == 1 ? "(Primary)" : "" }}</span>
 					</li>
 					<li>
-						<add-button showonhover2 type='researcher'></add-button>
+						<add-button showhidden type='researcher'></add-button>
 					</li>
 				</ul>
 			</div>
@@ -48,7 +48,7 @@
 						{{ grant.name }} ({{ grant.amount | currency }})
 					</li>
 					<li>
-						<add-button showonhover2 type='grant'></add-button>
+						<add-button showhidden type='grant'></add-button>
 					</li>
 				</ul>
 			</div>
@@ -62,7 +62,7 @@
 						{{ user.name }} ({{ user.hours_contributed | number : 2}})
 					</li>
 					<li>
-						<add-button showonhover2 type='user'></add-button>
+						<add-button showhidden type='user'></add-button>
 					</li>
 				</ul>
 			</div>
@@ -78,7 +78,7 @@
 						{{ t }}
 					</li>
 					<li>
-						<add-button showonhover2 type='tech'></add-button>
+						<add-button showhidden type='tech'></add-button>
 					</li>
 				</ul>
 			</div>
@@ -112,7 +112,7 @@
 	</div>
 </div>
 <div id='edit-overlay' ng-show="overlay == 'edit'">
-	<div class='panel panel-default {{ $parent.colsize }}' ng-controller='ProjectEditCtrl'>
+	<div class='panel panel-default' ng-controller='ProjectEditCtrl'>
 		<div class='panel-body'>
 			<form ng-if="fields.action == 'p_info'">
 				<div class='form-group'>
@@ -197,6 +197,23 @@
 					<textarea class='form-control' rows='4' cols='40' ng-model='fields.misc_info'></textarea>
 				</div>
 			</form>
+		</div>
+		<div class='panel-footer'>
+			<button type='button' class='btn btn-success' ng-click='save()'>Save</button>
+			<button type='button' class='btn btn-default' ng-click='$parent.hideOverlay()'>Close</button>
+		</div>
+	</div>
+</div>
+<div id='add-overlay' ng-show="overlay == 'add'">
+	<div class='panel panel-default' ng-controller='ProjectAddCtrl'>
+		<div class='panel-body'>
+			<div ng-if='add_action == "researcher"'>
+				<button type='button' class='btn btn-sm btn-default' ng-class='select_type == "existing" ? "active" : ""' ng-click='select_type = "existing"'>Existing</button>
+				<button type='button' class='btn btn-sm btn-default' ng-class='select_type == "new" ? "active" : ""' ng-click='select_type = "new"'>New</button>
+				<form>
+					
+				</form>
+			</div>
 		</div>
 		<div class='panel-footer'>
 			<button type='button' class='btn btn-success' ng-click='save()'>Save</button>

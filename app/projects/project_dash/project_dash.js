@@ -14,6 +14,11 @@ angular.module('project.dash', ['ngAnimate',
 		showOverlay('edit');
 	};
 	
+	$scope.add = function(type){
+		projectData.setAddAction(type);
+		showOverlay('add');
+	};
+	
 	function showOverlay(oly){
 		$scope.overlay = oly;
 	};
@@ -43,6 +48,23 @@ angular.module('project.dash', ['ngAnimate',
 	};
 }])
 
+.controller('ProjectAddCtrl', ['$scope', 'projectData', function($scope, projectData){
+	
+	$scope.$watch(
+		function(){
+			return projectData.getAddAction();
+		},
+		function(newVal){
+			$scope.add_action = projectData.getAddAction();
+		}
+	);
+	
+	$scope.save = function(){
+		projectData.addData();
+		$scope.$parent.hideOverlay();
+	};
+}])
+
 //displays edit/delete icons for a single item
 .directive('showonhover', function() {
 	return {
@@ -66,6 +88,19 @@ angular.module('project.dash', ['ngAnimate',
             });
             element.parent().parent().bind('mouseleave', function() {
                  element.css('display', 'none');
+            });
+        }
+    };
+})
+
+.directive('showhidden', function() {
+    return {
+        link : function(scope, element, attrs) {
+            element.parent().parent().bind('mouseenter', function() {
+                element.css('visibility', 'visible');
+            });
+            element.parent().parent().bind('mouseleave', function() {
+                 element.css('visibility', 'hidden');
             });
         }
     };
