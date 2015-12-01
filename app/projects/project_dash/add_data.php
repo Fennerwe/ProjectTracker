@@ -6,8 +6,7 @@
 	
 	switch($action){
 		case 'researcher':
-			if($select_type == 'new'){
-				
+			if($select_type == 'new'){				
 				$con->query("INSERT INTO researcher(researcher_first_name, researcher_last_name)
 							 VALUES('$first_name', '$last_name')");
 							 
@@ -33,6 +32,23 @@
 			$con->query("INSERT INTO project_grants(grant_id, project_id, partial_amount)
 						 VALUES($grant_id, $pid, $grant_amount)");
 						 
+			break;
+		case 'user':
+			if($select_type == 'new'){
+				$con->query("INSERT INTO users(user_first_name, user_last_name, security_role)
+							 VALUES('$first_name', '$last_name', 1)");
+							 
+				$rslt = $con->query("SELECT MAX(user_id) as id FROM users");
+				
+				$user_id = $rslt->fetch(PDO::FETCH_ASSOC)['id'];
+			}
+			
+			$con->query("INSERT INTO user_project_contrib(user_id, project_id, hours_contributed)
+						 VALUES($user_id, $pid, $hours)");
+						 
+			$con->query("UPDATE project_info
+						 SET	hours_used = hours_used + $hours
+						 WHERE	project_id = $pid");
 			break;
 	}
 ?>
