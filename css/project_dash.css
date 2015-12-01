@@ -107,6 +107,6 @@ li:last-child {
 	list-style: none;
 }
 
-#researcher_add_form {
+#researcher_add_form , #grant_add_form {
 	padding-top: 10px;
 }

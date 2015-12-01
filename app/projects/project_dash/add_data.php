@@ -21,5 +21,18 @@
 			$con->query("INSERT INTO project_researchers(researcher_id, project_id, pi_flag)
 						 VALUES($researcher_id, $pid, $pi)");
 			break;
+		case 'grant':
+			if($select_type == 'new'){
+				$con->query("INSERT INTO funded_grant(grant_name) VALUES('$grant_name')");
+				
+				$rslt = $con->query("SELECT MAX(grant_id) as id FROM funded_grant");
+				
+				$grant_id = $rslt->fetch(PDO::FETCH_ASSOC)['id'];
+			}
+			
+			$con->query("INSERT INTO project_grants(grant_id, project_id, partial_amount)
+						 VALUES($grant_id, $pid, $grant_amount)");
+						 
+			break;
 	}
 ?>

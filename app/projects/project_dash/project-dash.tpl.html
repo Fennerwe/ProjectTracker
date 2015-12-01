@@ -225,6 +225,24 @@
 					</label>
 				</form>
 			</div>
+			<div ng-if='add_action == "grant"'>
+				<button type='button' class='btn btn-sm btn-default' ng-clas='d.select_type == "new" ? "active" : ""' ng-click='d.select_type = "new"'>New</button>
+				<button type='button' class='btn btn-sm btn-default' ng-class='d.select_type == "existing" ? "active" : ""' ng-click='d.select_type = "existing"'>Existing</button>
+				<form id='grant_add_form' class='form-inline'>
+					<select class='form-control' ng-if='d.select_type == "existing"' ng-model='d.grant_id' ng-options='g.name for g in existing_data.grants track by g.id'></select>
+					<div class='form-group' ng-if='d.select_type == "new"'>
+						<label class='sr-only' for='add_grant_name'>Grant Name</label>
+						<input type='text' class='form-control' id='add_grant_name' ng-model='d.grant_name' placeholder='Grant Name' />
+					</div>
+					<div class='form-group' ng-if='d.select_type == "new"'>
+						<label class='sr-only' for='add_grant_amount'>Amount</label>
+						<div class='input-group'>
+							<span class='input-group-addon'>$</span>
+							<input type='text' class='form-control' id='add_grant_amount' ng-model='d.grant_amount' placeholder='0.00' />
+						</div>
+					</div>
+				</form>
+			</div>
 		</div>
 		<div class='panel-footer'>
 			<button type='button' class='btn btn-success' ng-click='save()'>Save</button>
