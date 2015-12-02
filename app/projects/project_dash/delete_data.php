@@ -11,5 +11,8 @@
 		case 'researchers':
 			$con->query("DELETE FROM project_researchers WHERE idx = $ind");
 			break;
+		case 'grants':
+			$con->query("DELETE FROM project_grants WHERE idx = $ind");
+			break;
 	}
 ?>

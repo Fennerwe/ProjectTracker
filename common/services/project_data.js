@@ -127,6 +127,9 @@ angular.module('services.project_data', []).factory('projectData', ['$http', fun
 					case 'researchers':
 						project.researchers = project.researchers.filter(function(obj){return obj.r_ind !== ind;});
 						break;
+					case 'grants':
+						project.grants = project.grants.filter(function(obj){return obj.g_ind !== ind;});
+						break;
 				}
 			});
 		};
