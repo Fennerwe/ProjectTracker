@@ -21,5 +21,19 @@
 											  FROM		user_project_contrib
 											  WHERE		project_id = $pid)");
 			break;
+		case 'tech':
+			$rslt = $con->query("SELECT tech_used FROM project_info WHERE project_id = $pid");
+			$tech = $rslt->fetch(PDO::FETCH_ASSOC)['tech_used'];
+			
+			$tech = explode('|', $tech);
+						
+			$ind = array_search($ind['value'], $tech);
+			
+			unset($tech[$ind]);
+			
+			$tech_used = implode('|', $tech);
+
+			$con->query("UPDATE project_info SET tech_used = '$tech_used' WHERE project_id = $pid");
+			break;
 	}
 ?>

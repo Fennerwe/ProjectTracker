@@ -137,6 +137,9 @@ angular.module('services.project_data', []).factory('projectData', ['$http', fun
 							setProjectBarColor();
 						});
 						break;
+					case 'tech':
+						project.tech = project.tech.filter(function(obj){return obj !== ind.value;});
+						break;
 				}
 			});
 		};
