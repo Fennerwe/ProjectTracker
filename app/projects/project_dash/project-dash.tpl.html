@@ -262,6 +262,14 @@
 					</div>
 				</form>
 			</div>
+			<div ng-if='add_action == "tech"'>
+				<form>
+					<div class='form-group'>
+						<label class='sr-only' for='add_tech'>New Tech</label>
+						<input type='text' class='form-control' id='add_tech' ng-model='d.tech' />
+					</div>
+				</form>
+			</div>
 		</div>
 		<div class='panel-footer'>
 			<button type='button' class='btn btn-success' ng-click='save()'>Save</button>

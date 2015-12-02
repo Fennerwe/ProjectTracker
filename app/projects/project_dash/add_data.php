@@ -50,5 +50,10 @@
 						 SET	hours_used = hours_used + $hours
 						 WHERE	project_id = $pid");
 			break;
+		case 'tech':
+			$con->query("UPDATE project_info
+						 SET	tech_used = CONCAT(tech_used, '|', '$tech')
+						 WHERE	project_id = $pid");
+			break;
 	}
 ?>
