@@ -67,8 +67,14 @@ angular.module('project.dash', ['ngAnimate',
 	
 	$scope.save = function(){
 		projectData.addData($scope.d);
+		$scope.d = {select_type: 'new'};
 		$scope.$parent.hideOverlay();
 	};
+	
+	$scope.close = function(){
+		$scope.d = {select_type: 'new'};
+		$scope.$parent.hideOverlay();
+	}
 }])
 
 //displays edit/delete icons for a single item
