@@ -46,6 +46,11 @@ angular.module('project.dash', ['ngAnimate',
 		projectData.saveChanges();
 		$scope.$parent.hideOverlay();
 	};
+	
+	$scope.delete = function(ind){
+		projectData.delete(ind);
+		$scope.$parent.hideOverlay();
+	};
 }])
 
 .controller('ProjectAddCtrl', ['$scope', 'projectData', '$http', function($scope, projectData, $http){

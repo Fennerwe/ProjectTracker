@@ -127,7 +127,7 @@
 					<label for='p_desc'>Description:</label>
 					<textarea class='form-control' rows='4' cols='40' ng-model='fields.desc' id='p_desc'>{{ fields.desc }}</textarea>
 				</div>
-				<button type='button' class='btn btn-block btn-danger' ng-click='delete()'>Delete Project</button>
+				<button type='button' class='btn btn-block btn-danger' ng-click='delete(null)'>Delete Project</button>
 			</form>
 			<form ng-if="fields.action == 'researchers'">
 				<span class='col-xs-6 underline'>Name:</span><span class='col-xs-3 center underline'>Primary</span><span class='col-xs-3 center underline'>Delete</span>

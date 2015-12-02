@@ -121,6 +121,16 @@ angular.module('services.project_data', []).factory('projectData', ['$http', fun
 			});
 		};
 		
+		this.delete = function(ind){
+			$http.post('app/projects/project_dash/delete_data.php', {action: editFields.action, ind: ind, pid: project.pid}).then(function(){
+				switch(editFields.action){
+					case 'researchers':
+						project.researchers = project.researchers.filter(function(obj){return obj.r_ind !== ind;});
+						break;
+				}
+			});
+		};
+		
 		this.addData = function(data){
 			data.pid = project.pid;
 			data.action = add_action;
