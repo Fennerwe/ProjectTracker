@@ -130,6 +130,13 @@ angular.module('services.project_data', []).factory('projectData', ['$http', fun
 					case 'grants':
 						project.grants = project.grants.filter(function(obj){return obj.g_ind !== ind;});
 						break;
+					case 'users':
+						$http.get('app/projects/project_dash/get_project_dash.php?r=users&project_id=' + project.pid, {cache: false}).then(function(response){
+							project.contributing_users = response.data['users'];
+							project.hours = response.data['hours'];
+							setProjectBarColor();
+						});
+						break;
 				}
 			});
 		};

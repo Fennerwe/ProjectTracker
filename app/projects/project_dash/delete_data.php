@@ -14,5 +14,12 @@
 		case 'grants':
 			$con->query("DELETE FROM project_grants WHERE idx = $ind");
 			break;
+		case 'users':
+			$con->query("DELETE FROM user_project_contrib WHERE idx = $ind");
+			$con->query("UPDATE project_info
+						 SET	hours_used = (SELECT 	SUM(hours_contributed)
+											  FROM		user_project_contrib
+											  WHERE		project_id = $pid)");
+			break;
 	}
 ?>
