@@ -31,8 +31,8 @@
 		$rslt['users'][] = $row;
 	}
 	
-	$query = "SELECT	grant_name,
-						grant_id
+	$query = "SELECT	grant_name as name,
+						grant_id as id
 			  FROM		funded_grant
 			  WHERE		grant_id NOT IN (SELECT	grant_id
 										 FROM	project_grants

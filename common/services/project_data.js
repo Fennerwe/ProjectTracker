@@ -161,7 +161,7 @@ angular.module('services.project_data', []).factory('projectData', ['$http', fun
 						break;
 					case 'user':
 						$http.get('app/projects/project_dash/get_project_dash.php?r=users&project_id=' + project.pid, {cache: false}).then(function(response){
-							project.users = response.data['users'];
+							project.contributing_users = response.data['users'];
 							project.hours = response.data['hours'];
 							setProjectBarColor();
 						});
