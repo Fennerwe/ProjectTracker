@@ -19,7 +19,7 @@
 	}
 	
 	$query = "SELECT	CONCAT(user_first_name, ' ', user_last_name) AS name,
-						user_id
+						user_id as id
 			  FROM		users
 			  WHERE		user_id NOT IN (SELECT	user_id
 										FROM	user_project_contrib

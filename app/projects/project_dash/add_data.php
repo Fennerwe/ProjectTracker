@@ -42,6 +42,9 @@
 				
 				$user_id = $rslt->fetch(PDO::FETCH_ASSOC)['id'];
 			}
+			else {
+				$user_id = $user['id'];
+			}
 			
 			$con->query("INSERT INTO user_project_contrib(user_id, project_id, hours_contributed)
 						 VALUES($user_id, $pid, $hours)");

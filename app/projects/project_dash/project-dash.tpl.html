@@ -247,7 +247,7 @@
 				<button type='button' class='btn btn-sm btn-default' ng-clas='d.select_type == "new" ? "active" : ""' ng-click='d.select_type = "new"'>New</button>
 				<button type='button' class='btn btn-sm btn-default' ng-class='d.select_type == "existing" ? "active" : ""' ng-click='d.select_type = "existing"'>Existing</button>
 				<form id='user_add_form' class='form-inline'>
-					<select class='form-control' ng-if='d.select_type == "existing"' ng-model='d.user_id' ng-option='u.name for u in existing_data.users track by u.id'></select>
+					<select class='form-control' ng-if='d.select_type == "existing"' ng-model='d.user' ng-options='u.name for u in existing_data.users track by u.id'></select>
 					<div class='form-group' ng-if='d.select_type == "new"'>
 						<label class='sr-only' for='add_user_first'>First Name</label>
 						<input type='text' class='form-control' id='add_user_first' ng-model='d.first_name' placeholder='First Name' />
