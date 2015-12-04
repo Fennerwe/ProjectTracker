@@ -28,6 +28,9 @@
 				
 				$grant_id = $rslt->fetch(PDO::FETCH_ASSOC)['id'];
 			}
+			else {
+				$grant_id = $grant['id'];
+			}
 			
 			$con->query("INSERT INTO project_grants(grant_id, project_id, partial_amount)
 						 VALUES($grant_id, $pid, $grant_amount)");
