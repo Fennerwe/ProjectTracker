@@ -14,6 +14,9 @@
 				
 				$researcher_id = $rslt->fetch(PDO::FETCH_ASSOC)['id'];
 			}
+			else {
+				$researcher_id = $researcher['id'];
+			}
 			
 			$pi = $primary ? 1 : 0;
 			

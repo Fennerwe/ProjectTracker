@@ -211,7 +211,7 @@
 				<button type='button' class='btn btn-sm btn-default' ng-class='d.select_type == "new" ? "active" : ""' ng-click='d.select_type = "new"'>New</button>
 				<button type='button' class='btn btn-sm btn-default' ng-class='d.select_type == "existing" ? "active" : ""' ng-click='d.select_type = "existing"'>Existing</button>
 				<form id='researcher_add_form' class='form-inline'>
-					<select class='form-control' ng-if='d.select_type == "existing"' ng-model='d.researcher_id' ng-options='r.name for r in existing_data.researchers track by r.id'></select>
+					<select class='form-control' ng-if='d.select_type == "existing"' ng-model='d.researcher' ng-options='r.name for r in existing_data.researchers track by r.id'></select>
 					<div class='form-group' ng-if='d.select_type == "new"'>
 						<label class='sr-only' for='add_researcher_first'>First Name</label>
 						<input type='text' class='form-control' id='add_researcher_first' ng-model='d.first_name' placeholder='First' />
