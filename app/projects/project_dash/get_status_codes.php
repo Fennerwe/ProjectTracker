@@ -2,7 +2,8 @@
 	require_once('../../../common/dbconnect.php');
 	
 	$query = "SELECT	status_text,
-						css_class
+						css_class,
+						status_id as id
 			  FROM		status";
 			  
 	$rslt = $con->query($query);

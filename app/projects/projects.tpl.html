@@ -7,8 +7,32 @@
 	</div>
 	<div class='container col-xs-12'>
 		<div class='row'>
-			<new_project_card></new_project_card>
+			<new_project_card ng-click='add_new_project=true'></new_project_card>
 			<card ng-repeat='project in projects'></card>
+		</div>
+	</div>
+</div>
+<div id='new_project_overlay' class='container col-xs-12' ng-if='add_new_project' ng-controller='NewProjectCtrl'>
+	<div class='panel panel-default'>
+		<div class='panel-body'>
+			<form>
+				<div class='form-group'>
+					<label class='sr-only' for='new_project_name'>Project Name</label>
+					<input id='new_project_name' type='text' class='form-control' placeholder='Project Name' ng-model='project.name' />
+				</div>
+				<div class='form-group'>
+					<label class='sr-only' for='new_project_desc'>Project Description</label>
+					<textarea cols='40' rows='8' class='form-control' id='new_project_desc' placeholder='Description' ng-model='project.desc'></textarea>
+				</div>
+				<div class='form-group'>
+					<label for='new_project_status'>Status</label>
+					<select id='new_project_status' class='form-control' ng-model='project.status' ng-options='sc.status_text for sc in status_codes track by sc.status_text'></select>
+				</div>
+			</form>
+		</div>
+		<div class='panel-footer'>
+			<button type='button' class='btn btn-default btn-success' ng-click='createProject()'>Create Project</button>
+			<button type='button' class='btn btn-default' ng-click='close()'>Cancel</button>
 		</div>
 	</div>
 </div>
