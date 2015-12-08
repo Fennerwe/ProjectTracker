@@ -28,7 +28,7 @@ angular.module('project.dash', ['ngAnimate',
 	};
 }])
 
-.controller('ProjectEditCtrl', ['$scope', '$http', 'projectData', function($scope, $http, projectData){
+.controller('ProjectEditCtrl', ['$scope', '$http', 'projectData', '$state', function($scope, $http, projectData, $state){
 	$http.get('app/projects/project_dash/get_status_codes.php', {cache: true}).then(function(response){
 		$scope.status_codes = response.data;
 	});
@@ -49,6 +49,9 @@ angular.module('project.dash', ['ngAnimate',
 	
 	$scope.delete = function(ind){
 		projectData.delete(ind);
+		if($scope.fields.action == 'p_info'){
+			$state.go('projects', {});
+		}
 		$scope.$parent.hideOverlay();
 	};
 }])
