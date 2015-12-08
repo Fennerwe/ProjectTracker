@@ -33,10 +33,10 @@
 			
 			//convert tech used into an array
 			$tech_arr = array();
-			if($rslt['tech'] and count($rslt['tech']) > 1){
+			if($rslt['tech'] && strpos($rslt['tech'], '|')){
 				$tech_arr = explode("|", $rslt['tech']);
 			}
-			else if($rslt['tech'] and count($rslt['tech']) == 1){
+			else if($rslt['tech'] && count($rslt['tech']) == 1){
 				array_push($tech_arr, $rslt['tech']);
 			}
 			$rslt['tech'] = $tech_arr;
