@@ -61,8 +61,8 @@
 		case 'extra':
 			$start_date_str = $date_started ? "'".date("Y-m-d H:i:s", strtotime($date_started))."'" : 'null';
 			$comp_date_str = $date_completed ? "'".date("Y-m-d H:i:s", strtotime($date_completed))."'" : 'null';
-			$dep_server = $dep_server ? $dep_server : 'null';
-			$git_repo = $git_repo ? $git_repo : 'null';
+			$dep_server = $dep_server ? $dep_server : null;
+			$git_repo = $git_repo ? $git_repo : null;
 			$excess_charges = $excess_charges ? $excess_charges : 'null';
 			$misc_info = $misc_info ? $misc_info : 'null';
 		
