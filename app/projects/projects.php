@@ -11,7 +11,8 @@
 						status s
 			  WHERE		s.status_id = p.status_id
 			  ORDER BY	s.status_id,
-						project_name";
+						p.hours_used desc,
+						p.project_name";
 						
 	$rslt = $con->query($query);
 	
