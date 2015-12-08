@@ -32,7 +32,14 @@
 			$rslt = array_merge($rslt, $project_info->fetchAll(PDO::FETCH_ASSOC)[0]);
 			
 			//convert tech used into an array
-			$rslt['tech'] = explode("|", $rslt['tech']);
+			$tech_arr = array();
+			if($rslt['tech'] and count($rslt['tech']) > 1){
+				$tech_arr = explode("|", $rslt['tech']);
+			}
+			else if($rslt['tech'] and count($rslt['tech']) == 1){
+				array_push($tech_arr, $rslt['tech']);
+			}
+			$rslt['tech'] = $tech_arr;
 			
 			//change date timestamps
 			$rslt['date_started'] = date_format(date_create($rslt['date_started']), "F d, Y");

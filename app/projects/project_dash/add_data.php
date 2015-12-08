@@ -61,8 +61,29 @@
 			break;
 		case 'tech':
 			$con->query("UPDATE project_info
-						 SET	tech_used = CONCAT(tech_used, '|', '$tech')
+						 SET	tech_used = (
+									CASE
+										WHEN
+											isnull(tech_used) or tech_used = ''
+										THEN
+											'$tech'
+										ELSE
+											CONCAT(tech_used, '|', '$tech')
+									END
+								)
 						 WHERE	project_id = $pid");
+			echo "UPDATE project_info
+						 SET	tech_used = (
+									CASE
+										WHEN
+											isnull(tech_used)
+										THEN
+											'$tech'
+										ELSE
+											CONCAT(tech_used, '|', '$tech')
+									END
+								)
+						 WHERE	project_id = $pid";
 			break;
 	}
 ?>
