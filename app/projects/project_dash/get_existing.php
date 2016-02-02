@@ -3,7 +3,7 @@
 	
 	$pid = $_GET['pid'];
 	
-	$rslt = [];
+	$rslt = array();
 	
 	$query = "SELECT	CONCAT(researcher_first_name, ' ', researcher_last_name) AS name,
 						researcher_id as id

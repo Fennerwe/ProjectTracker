@@ -29,7 +29,8 @@
 								
 			$project_info = $con->query($query);
 			
-			$rslt = array_merge($rslt, $project_info->fetchAll(PDO::FETCH_ASSOC)[0]);
+			$tmp = $project_info->fetch(PDO::FETCH_ASSOC);
+			$rslt = array_merge($rslt, $tmp);
 			
 			//convert tech used into an array
 			$tech_arr = array();
@@ -67,7 +68,8 @@
 					  
 			$hours = $con->query($query);
 			
-			$rslt['hours'] = $hours->fetch(PDO::FETCH_ASSOC)['hours_used'];
+			$tmp = $hours->fetch(PDO::FETCH_ASSOC);
+			$rslt['hours'] = $tmp['hours_used'];
 			break;
 	}
 	
